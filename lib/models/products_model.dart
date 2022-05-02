@@ -33,13 +33,13 @@ class ProductModel {
   int? id;
   String? name;
   String? description;
-  int? price;
-  int? stars;
+  String? price; //int
+  String? stars; //int
   String? img;
   String? location;
   String? createdAt;
   String? updatedAt;
-  int? typeId;
+  String? typeId; //int
 
   ProductModel(
       {this.id,
