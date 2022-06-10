@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
-import 'package:food_delivery/pages/food/recommended_food_details.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:food_delivery/helper/dependencies.dart' as dep;
 
 Future<void> main() async {
