@@ -48,7 +48,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                   padding: EdgeInsets.only(top: 5, bottom: 10),
                   child: Center(
                       child: BigText(
-                    text: 'Chinese Side',
+                    text: product.name!,
                     size: Dimensions.font26,
                   )),
                 )),
