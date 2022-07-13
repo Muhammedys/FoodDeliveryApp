@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
@@ -29,10 +30,12 @@ class PopularFoodDetails extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.popularFoodImgSize,
-              child: Image.asset(
-                'assets/image/food0.png',
-                fit: BoxFit.cover,
-              ),
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(AppConstants.BASE_URL +
+                          AppConstants.UPLOAD_URL +
+                          product.img!))),
             ),
           ),
           // Icon widget
@@ -74,7 +77,7 @@ class PopularFoodDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppColumn(
-                      text: 'Biriani',
+                      text: product.name!,
                     ),
                     SizedBox(
                       height: Dimensions.height20,
@@ -85,9 +88,7 @@ class PopularFoodDetails extends StatelessWidget {
                     ),
                     Expanded(
                       child: SingleChildScrollView(
-                        child: ExpandableTextWidget(
-                            text:
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
+                        child: ExpandableTextWidget(text: product.description!),
                       ),
                     ),
                   ],
@@ -148,7 +149,9 @@ class PopularFoodDetails extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: AppColors.mainColor),
-              child: BigText(text: '\$10 | Add to cart', color: Colors.white),
+              child: BigText(
+                  text: '\$${product.price!} | Add to cart',
+                  color: Colors.white),
             )
           ],
         ),

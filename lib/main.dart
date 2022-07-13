@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // home: MainFoodPage(),
-      home: MainFoodPage(),
+      home: const MainFoodPage(),
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
     );
