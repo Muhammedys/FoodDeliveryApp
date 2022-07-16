@@ -4,6 +4,7 @@ import 'package:food_delivery/data/repository/popular_product_repo.dart';
 import 'package:food_delivery/models/products_model.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -58,13 +59,35 @@ class PopularProductController extends GetxController {
     }
   }
 
-  void initProduct(CartController cart) {
+  void initProduct(ProductModel product, CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
     _cart = cart;
+    var exists = false;
+    exists = _cart.existInCart(product);
+
+    print('Exist or not ' + exists.toString());
+    if (exists) {
+      _inCartItems = _cart.getQuantity(product);
+    }
+    print('the quantity in the cart is ' + _inCartItems.toString());
   }
 
   void addItem(ProductModel product) {
-    _cart.addItem(product, _quantity);
+    if (quantity > 0) {
+      _cart.addItem(product, _quantity);
+      _quantity = 0;
+      _cart.items.forEach((key, value) {
+        print('The id is ' +
+            value.id.toString() +
+            ' The quantity is ' +
+            value.quantity.toString());
+      });
+    } else {
+      Get.snackbar('Item Count', "You should atleast add an item in the cart !",
+          backgroundColor: AppColors.mainColor,
+          colorText: Colors.white,
+          duration: const Duration(seconds: 1));
+    }
   }
 }
