@@ -16,11 +16,11 @@ class PopularFoodDetails extends StatelessWidget {
   PopularFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
-  Widget build(BuildContex) {
+  Widget build(BuildContext context) {
     var product =
         Get.find<PopularProductController>().popularProductList[pageId];
     Get.find<PopularProductController>()
-        .initProduct(Get.find<CartController>());
+        .initProduct(product, Get.find<CartController>());
     return Scaffold(
       body: Stack(
         children: [
