@@ -22,7 +22,7 @@ class IconAndTextWidget extends StatelessWidget {
           size: Dimensions.iconSize24,
           color: iconColor,
         ),
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
         SmallText(text: text),

@@ -83,7 +83,7 @@ class PopularProductController extends GetxController {
         print('The id is ' +
             value.id.toString() +
             ' The quantity is ' +
-            value.quantity.toString());
+            value.quantity.toString());   
       });
     } else {
       Get.snackbar('Item Count', "You should atleast add an item in the cart !",

@@ -137,7 +137,7 @@ class PopularFoodDetails extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),
-                    BigText(text: PopularProduct.quantity.toString()),
+                    BigText(text: PopularProduct.inCartItems.toString()),
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/models/products_model.dart';
-import 'package:food_delivery/pages/food/popular_food_details.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -24,8 +23,8 @@ class FoodPageBody extends StatefulWidget {
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
-  double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  final double _scaleFactor = 0.8;
+  final double _height = Dimensions.pageViewContainer;
 
   @override
   void initState() {
@@ -57,14 +56,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   child: PageView.builder(
                       controller: pageController,
                       itemCount: popularProducts.popularProductList.length,
-                      itemBuilder: ((context, Position) {
-                        return _buildPageItem(Position,
-                            popularProducts.popularProductList[Position]);
+                      itemBuilder: ((context, position) {
+                        return _buildPageItem(position,
+                            popularProducts.popularProductList[position]);
                       })),
                 )
               : Container(
                   height: Dimensions.pageView,
-                  child: Center(
+                  child: const Center(
                     child: CircularProgressIndicator(
                       color: AppColors.mainColor,
                     ),
@@ -96,7 +95,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(
+              const BigText(
                 text: 'Recomended',
                 color: AppColors.mainColor,
               ),
@@ -105,7 +104,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
-                child: BigText(text: '.', color: Colors.black26),
+                child: const BigText(text: '.', color: Colors.black26),
               ),
               SizedBox(
                 width: Dimensions.width10,
@@ -118,10 +117,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           ),
         ),
         // List of foods and images
-        GetBuilder<RecommendedProductController>(builder: (RecommendedProduct) {
-          return RecommendedProduct.isLoaded
+        GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
+          return recommendedProduct.isLoaded
               ? ListView.builder(
-                  itemCount: RecommendedProduct.recommendedProductList.length,
+                  itemCount: recommendedProduct.recommendedProductList.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
@@ -148,7 +147,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   image: DecorationImage(
                                     image: NetworkImage(AppConstants.BASE_URL +
                                         AppConstants.UPLOAD_URL +
-                                        RecommendedProduct
+                                        recommendedProduct
                                             .recommendedProductList[index]
                                             .img!),
                                     fit: BoxFit.cover,
@@ -177,7 +176,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                             MainAxisAlignment.center,
                                         children: [
                                           BigText(
-                                            text: RecommendedProduct
+                                            text: recommendedProduct
                                                 .recommendedProductList[index]
                                                 .name!,
                                           ),
@@ -185,7 +184,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                             height: Dimensions.height10,
                                           ),
                                           SmallText(
-                                              text: RecommendedProduct
+                                              text: recommendedProduct
                                                   .recommendedProductList[index]
                                                   .description!),
                                           SizedBox(
@@ -194,7 +193,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
-                                            children: [
+                                            children: const [
                                               IconAndTextWidget(
                                                 icon: Icons.circle_sharp,
                                                 text: 'Normal',
@@ -221,7 +220,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     );
                   },
                 )
-              : CircularProgressIndicator(
+              : const CircularProgressIndicator(
                   color: AppColors.mainColor,
                 );
         })
@@ -265,7 +264,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 left: Dimensions.width10, right: Dimensions.width10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: index.isEven ? Color(0xff69c5df) : Color(0xff9294cc),
+                color: index.isEven
+                    ? const Color(0xff69c5df)
+                    : const Color(0xff9294cc),
                 image: DecorationImage(
                     image: NetworkImage(AppConstants.BASE_URL +
                         AppConstants.UPLOAD_URL +
@@ -284,7 +285,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Color(0xFFe8e8e8),
                     blurRadius: 5.0,

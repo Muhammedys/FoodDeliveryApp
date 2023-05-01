@@ -30,12 +30,12 @@ class RecommendedFoodDetails extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () => Get.toNamed(RouteHelper.initial),
-                    child: AppIcon(icon: Icons.clear)),
-                AppIcon(icon: Icons.shopping_cart_outlined)
+                    child: const AppIcon(icon: Icons.clear)),
+                const AppIcon(icon: Icons.shopping_cart_outlined)
               ],
             ),
             bottom: PreferredSize(
-                preferredSize: Size.fromHeight(20),
+                preferredSize: const Size.fromHeight(20),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -45,7 +45,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                     ),
                   ),
                   width: double.maxFinite,
-                  padding: EdgeInsets.only(top: 5, bottom: 10),
+                  padding: const EdgeInsets.only(top: 5, bottom: 10),
                   child: Center(
                       child: BigText(
                     text: product.name!,
@@ -133,7 +133,7 @@ class RecommendedFoodDetails extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(Dimensions.radius20),
                         color: Colors.white),
-                    child: Icon(
+                    child: const Icon(
                       Icons.favorite,
                       color: AppColors.mainColor,
                     )),
@@ -147,7 +147,8 @@ class RecommendedFoodDetails extends StatelessWidget {
                       borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: AppColors.mainColor),
                   child:
-                      BigText(text: '\$10 | Add to cart', color: Colors.white),
+                      const BigText(
+                      text: '\$10 | Add to cart', color: Colors.white),
                 )
               ],
             ),
