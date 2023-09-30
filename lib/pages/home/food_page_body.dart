@@ -50,7 +50,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         // Slider section
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return popularProducts.isLoaded
-              ? Container(
+              ? SizedBox(
                   // color: Colors.redAccent,
                   height: Dimensions.pageView,
                   child: PageView.builder(
@@ -61,7 +61,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                             popularProducts.popularProductList[position]);
                       })),
                 )
-              : Container(
+              : SizedBox(
                   height: Dimensions.pageView,
                   child: const Center(
                     child: CircularProgressIndicator(
@@ -111,7 +111,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               Container(
                 margin: const EdgeInsets.only(bottom: 2),
-                child: SmallText(text: 'Food pairing'),
+                child: const SmallText(text: 'Food pairing'),
               ),
             ],
           ),
@@ -145,8 +145,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                       Dimensions.radius20),
                                   color: Colors.white38,
                                   image: DecorationImage(
-                                    image: NetworkImage(AppConstants.BASE_URL +
-                                        AppConstants.UPLOAD_URL +
+                                    image: NetworkImage(AppConstants.baseUrl +
+                                        AppConstants.uploadUrl +
                                         recommendedProduct
                                             .recommendedProductList[index]
                                             .img!),
@@ -190,10 +190,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                           SizedBox(
                                             height: Dimensions.height10,
                                           ),
-                                          Row(
+                                          const Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
-                                            children: const [
+                                            children: [
                                               IconAndTextWidget(
                                                 icon: Icons.circle_sharp,
                                                 text: 'Normal',
@@ -268,8 +268,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     ? const Color(0xff69c5df)
                     : const Color(0xff9294cc),
                 image: DecorationImage(
-                    image: NetworkImage(AppConstants.BASE_URL +
-                        AppConstants.UPLOAD_URL +
+                    image: NetworkImage(AppConstants.baseUrl +
+                        AppConstants.uploadUrl +
                         popularProduct.img!),
                     fit: BoxFit.cover)),
           ),

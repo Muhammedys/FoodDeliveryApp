@@ -50,9 +50,9 @@ class AppColumn extends StatelessWidget {
         SizedBox(
           height: Dimensions.height20,
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             IconAndTextWidget(
               icon: Icons.circle_sharp,
               text: 'Normal',

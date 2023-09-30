@@ -12,8 +12,8 @@ import 'package:food_delivery/widgets/expandable_text_widget.dart';
 import 'package:get/get.dart';
 
 class PopularFoodDetails extends StatelessWidget {
-  int pageId;
-  PopularFoodDetails({Key? key, required this.pageId}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetails({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class PopularFoodDetails extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(AppConstants.BASE_URL +
-                          AppConstants.UPLOAD_URL +
+                      image: NetworkImage(AppConstants.baseUrl +
+                          AppConstants.uploadUrl +
                           product.img!))),
             ),
           ),
@@ -48,12 +48,12 @@ class PopularFoodDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () => Get.to(() => MainFoodPage()),
-                    child: AppIcon(
+                    onTap: () => Get.to(() => const MainFoodPage()),
+                    child: const AppIcon(
                       icon: Icons.arrow_back_ios,
                     ),
                   ),
-                  AppIcon(
+                  const AppIcon(
                     icon: Icons.shopping_cart_outlined,
                   ),
                 ],
@@ -83,7 +83,7 @@ class PopularFoodDetails extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: 'Introduce'),
+                    const BigText(text: 'Introduce'),
                     SizedBox(
                       height: Dimensions.height20,
                     ),
@@ -98,7 +98,7 @@ class PopularFoodDetails extends StatelessWidget {
         ],
       ),
       bottomNavigationBar:
-          GetBuilder<PopularProductController>(builder: (PopularProduct) {
+          GetBuilder<PopularProductController>(builder: (popularProduct) {
         return Container(
           height: Dimensions.bottomHeightBar,
           padding: EdgeInsets.only(
@@ -127,9 +127,9 @@ class PopularFoodDetails extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        PopularProduct.setQuantity(false);
+                        popularProduct.setQuantity(false);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.remove,
                         color: AppColors.signColor,
                       ),
@@ -137,15 +137,15 @@ class PopularFoodDetails extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),
-                    BigText(text: PopularProduct.inCartItems.toString()),
+                    BigText(text: popularProduct.inCartItems.toString()),
                     SizedBox(
                       width: Dimensions.width10 / 2,
                     ),
                     GestureDetector(
                       onTap: () {
-                        PopularProduct.setQuantity(true);
+                        popularProduct.setQuantity(true);
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.add,
                         color: AppColors.signColor,
                       ),
@@ -155,7 +155,7 @@ class PopularFoodDetails extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  PopularProduct.addItem(product);
+                  popularProduct.addItem(product);
                 },
                 child: Container(
                   padding: EdgeInsets.only(
